@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		      <div class="el-drawer__body">
+		        <el-row :gutter="10">
+		          <el-col :span="22" :offset="1">
+		            <ProjectMileStone v-if="forceRefresh" :project-id="projectId" />
+		          </el-col>
+		        </el-row>
+		      </div>
+		    </el-drawer>
+			
+			<script>
+				toView(row) {
+				      this.forceRefresh = false
+				      this.projectId = row.projectId
+				      this.detailTitle = row.projectName
+				      // 强制刷新子组件
+				      this.$nextTick(() => {
+				        this.forceRefresh = true
+				        this.dialogDetailFormVisible = true
+				      })
+				    }
+				</script>
+	</body>
+</html>
